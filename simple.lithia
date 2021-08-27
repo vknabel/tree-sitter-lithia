@@ -1,0 +1,28 @@
+package example
+data True {}
+
+import booleans
+import some.api {
+    fetch
+}
+
+let abc = def
+
+some calls
+
+func abc { x => x }
+
+func abc { param param param =>
+    some calls
+}
+
+data True
+enum Optional {
+    data Some { value }
+    None
+}
+
+switch Optional {
+    Some: { some => }
+    None: { none => }
+} x
