@@ -82,7 +82,8 @@ module.exports = grammar({
       ),
     data_property_list: ($) =>
       seq(sepRepeat1($._list_terminator, $.data_property)),
-    data_property: ($) => repeat1($.identifier),
+    data_property: ($) =>
+      seq($.identifier, repeat(alias($.identifier, $.data_property_parameter))),
 
     // enum X
     // enum X { Abc, enum Def, data X }
@@ -104,10 +105,7 @@ module.exports = grammar({
 
     // statement list
     _statement_list: ($) =>
-      seq(
-        sepRepeat1($._statement_terminator, $._statement),
-        optional($._statement_terminator)
-      ),
+      seq(sepRepeat1($._statement_terminator, $._statement)),
     _statement: ($) => choice($._scope_level_declaration, $._expression),
 
     _expression: ($) =>
@@ -139,8 +137,8 @@ module.exports = grammar({
         prec.right(0, seq($._expression, "$", $._expression))
       ),
     invocation_expression: ($) => seq($._argument, repeat1($._argument)),
-    _argument: ($) => choice($._member_access, $._literal, $.switch_expression),
-    _member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),
+    _argument: ($) => choice($.member_access, $._literal, $.switch_expression),
+    member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),
 
     switch_expression: ($) =>
       seq("switch", field("type", $._argument), field("body", $.switch_body)),
@@ -196,8 +194,8 @@ module.exports = grammar({
       ),
     parameter_list: ($) => repeat1($.identifier),
 
-    _statement_terminator: ($) => choice(/[\n;]/),
-    _list_terminator: ($) => choice(/[\n,]/),
+    _statement_terminator: ($) => choice(/(\n+|;)/),
+    _list_terminator: ($) => choice(/(\n+|,)/),
     identifier: ($) => token(seq(letter, repeat(choice(letter, unicodeDigit)))),
     _number: ($) => /[0-9]+/,
 

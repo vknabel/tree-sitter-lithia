@@ -393,11 +393,25 @@
       ]
     },
     "data_property": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "identifier"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "data_property_parameter"
+          }
+        }
+      ]
     },
     "enum_declaration": {
       "type": "SEQ",
@@ -557,18 +571,6 @@
                   "type": "BLANK"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_statement_terminator"
-            },
-            {
-              "type": "BLANK"
             }
           ]
         }
@@ -952,7 +954,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_member_access"
+          "name": "member_access"
         },
         {
           "type": "SYMBOL",
@@ -964,7 +966,7 @@
         }
       ]
     },
-    "_member_access": {
+    "member_access": {
       "type": "SEQ",
       "members": [
         {
@@ -1352,7 +1354,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[\\n;]"
+          "value": "(\\n+|;)"
         }
       ]
     },
@@ -1361,7 +1363,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[\\n,]"
+          "value": "(\\n+|,)"
         }
       ]
     },

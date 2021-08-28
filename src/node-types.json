@@ -32,6 +32,10 @@
           "named": true
         },
         {
+          "type": "member_access",
+          "named": true
+        },
+        {
           "type": "number_literal",
           "named": true
         },
@@ -56,7 +60,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "array_literal",
@@ -80,6 +84,10 @@
         },
         {
           "type": "invocation_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -135,6 +143,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "data_property_parameter",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -249,10 +261,6 @@
         "required": false,
         "types": [
           {
-            "type": ".",
-            "named": false
-          },
-          {
             "type": "array_literal",
             "named": true
           },
@@ -293,6 +301,10 @@
             "named": true
           },
           {
+            "type": "member_access",
+            "named": true
+          },
+          {
             "type": "number_literal",
             "named": true
           },
@@ -327,13 +339,9 @@
     "named": true,
     "fields": {
       "expression": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "array_literal",
             "named": true
@@ -356,6 +364,10 @@
           },
           {
             "type": "invocation_expression",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           },
           {
@@ -422,7 +434,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "array_literal",
@@ -438,6 +450,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -470,13 +486,9 @@
         ]
       },
       "value": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "array_literal",
             "named": true
@@ -502,6 +514,10 @@
             "named": true
           },
           {
+            "type": "member_access",
+            "named": true
+          },
+          {
             "type": "number_literal",
             "named": true
           },
@@ -519,6 +535,41 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "member_access",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "function_literal",
+          "named": true
+        },
+        {
+          "type": "group_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -621,6 +672,10 @@
           "named": true
         },
         {
+          "type": "member_access",
+          "named": true
+        },
+        {
           "type": "number_literal",
           "named": true
         },
@@ -674,13 +729,9 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "array_literal",
             "named": true
@@ -703,6 +754,10 @@
           },
           {
             "type": "invocation_expression",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           },
           {
@@ -724,13 +779,9 @@
         ]
       },
       "label": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "array_literal",
             "named": true
@@ -753,6 +804,10 @@
           },
           {
             "type": "invocation_expression",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           },
           {
@@ -790,13 +845,9 @@
         ]
       },
       "type": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "array_literal",
             "named": true
@@ -811,6 +862,10 @@
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_access",
             "named": true
           },
           {
@@ -834,8 +889,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "array_literal",
@@ -859,6 +914,10 @@
         },
         {
           "type": "invocation_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -975,6 +1034,10 @@
   {
     "type": "data",
     "named": false
+  },
+  {
+    "type": "data_property_parameter",
+    "named": true
   },
   {
     "type": "enum",
