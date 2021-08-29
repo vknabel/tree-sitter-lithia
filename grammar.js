@@ -125,9 +125,13 @@ module.exports = grammar({
         $.unary_expression
       ),
     complex_invocation_expression: ($) =>
-      seq($._argument, sepRepeat1(",", $._simple_expression)),
+      seq(
+        field("function", $._argument),
+        sepRepeat1(",", $._simple_expression)
+      ),
     // a b
-    simple_invocation_expression: ($) => seq($._argument, $._argument),
+    simple_invocation_expression: ($) =>
+      seq(field("function", $._argument), $._argument),
 
     _simple_expression: ($) =>
       choice(
