@@ -28,7 +28,7 @@ module.exports = grammar({
         $.data_declaration,
         $.function_declaration,
         $.let_declaration,
-        $._expression
+        $._simple_expression
       ),
     _scope_level_declaration: ($) =>
       choice(
@@ -59,7 +59,7 @@ module.exports = grammar({
         "let",
         field("name", $.identifier),
         optional("="),
-        field("value", $._expression)
+        field("value", $._simple_expression)
       ),
 
     // func
@@ -81,9 +81,13 @@ module.exports = grammar({
         )
       ),
     data_property_list: ($) =>
-      seq(sepRepeat1($._list_terminator, $.data_property)),
-    data_property: ($) =>
-      seq($.identifier, repeat(alias($.identifier, $.data_property_parameter))),
+      seq(sepRepeat1($._statement_terminator, $._data_property)),
+    _data_property: ($) =>
+      choice($.data_property_value, $.data_property_function),
+    data_property_value: ($) => field("name", $.identifier),
+    data_property_function: ($) =>
+      seq(field("name", $.identifier), field("parameters", $.parameter_list)),
+    // seq($.identifier, repeat(alias($.identifier, $.data_property_parameter))),
 
     // enum X
     // enum X { Abc, enum Def, data X }
@@ -106,37 +110,57 @@ module.exports = grammar({
     // statement list
     _statement_list: ($) =>
       seq(sepRepeat1($._statement_terminator, $._statement)),
-    _statement: ($) => choice($._scope_level_declaration, $._expression),
+    _statement: ($) =>
+      choice($._scope_level_declaration, $._complex_expression),
 
-    _expression: ($) =>
+    _complex_expression: ($) =>
       choice(
-        choice($._argument, seq($.invocation_expression)),
+        // a
+        $._argument,
+        // a b, c, (d e)
+        $.complex_invocation_expression,
+        // a + b
+        // $.binary_expression,
+        // !a
+        $.unary_expression
+      ),
+    complex_invocation_expression: ($) =>
+      seq($._argument, sepRepeat1(",", $._simple_expression)),
+    // a b
+    simple_invocation_expression: ($) => seq($._argument, $._argument),
+
+    _simple_expression: ($) =>
+      choice(
+        $._argument,
+        $.simple_invocation_expression,
         $.unary_expression,
         $.binary_expression
       ),
+    _operand_expression: ($) =>
+      choice($._argument, $.unary_expression, $.binary_expression),
     unary_expression: ($) =>
-      prec(2, choice(seq("!", $._expression), seq("-", $._expression))),
+      prec(
+        2,
+        choice(seq("!", $._operand_expression), seq("-", $._operand_expression))
+      ),
     binary_expression: ($) =>
       choice(
-        prec.left(7, seq($._expression, "*", $._expression)),
-        prec.left(7, seq($._expression, "/", $._expression)),
+        prec.left(7, seq($._operand_expression, "*", $._operand_expression)),
+        prec.left(7, seq($._operand_expression, "/", $._operand_expression)),
 
-        prec.left(6, seq($._expression, "+", $._expression)),
-        prec.left(6, seq($._expression, "-", $._expression)),
+        prec.left(6, seq($._operand_expression, "+", $._operand_expression)),
+        prec.left(6, seq($._operand_expression, "-", $._operand_expression)),
 
-        prec.left(4, seq($._expression, "==", $._expression)),
-        prec.left(4, seq($._expression, "!=", $._expression)),
-        prec.left(4, seq($._expression, ">=", $._expression)),
-        prec.left(4, seq($._expression, ">", $._expression)),
-        prec.left(4, seq($._expression, "<", $._expression)),
-        prec.left(4, seq($._expression, "<=", $._expression)),
+        prec.left(4, seq($._operand_expression, "==", $._operand_expression)),
+        prec.left(4, seq($._operand_expression, "!=", $._operand_expression)),
+        prec.left(4, seq($._operand_expression, ">=", $._operand_expression)),
+        prec.left(4, seq($._operand_expression, ">", $._operand_expression)),
+        prec.left(4, seq($._operand_expression, "<", $._operand_expression)),
+        prec.left(4, seq($._operand_expression, "<=", $._operand_expression)),
 
-        prec.right(4, seq($._expression, "&&", $._expression)),
-        prec.right(4, seq($._expression, "||", $._expression)),
-
-        prec.right(0, seq($._expression, "$", $._expression))
+        prec.right(4, seq($._operand_expression, "&&", $._operand_expression)),
+        prec.right(4, seq($._operand_expression, "||", $._operand_expression))
       ),
-    invocation_expression: ($) => seq($._argument, repeat1($._argument)),
     _argument: ($) => choice($.member_access, $._literal, $.switch_expression),
     member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),
 
@@ -145,7 +169,11 @@ module.exports = grammar({
     switch_body: ($) => seq("{", optional($._switch_case_list), "}"),
     _switch_case_list: ($) => sepRepeat1($._list_terminator, $.switch_case),
     switch_case: ($) =>
-      seq(field("label", $._expression), ":", field("body", $._expression)),
+      seq(
+        field("label", $._simple_expression),
+        ":",
+        field("body", $._simple_expression)
+      ),
 
     _literal: ($) =>
       choice(
@@ -178,13 +206,14 @@ module.exports = grammar({
           )
         )
       ),
-    group_literal: ($) => seq("(", field("expression", $._expression), ")"),
+    group_literal: ($) =>
+      seq("(", field("expression", $._complex_expression), ")"),
     number_literal: ($) => $._number,
     array_literal: ($) =>
-      seq("[", sepRepeat($._list_terminator, $._expression), "]"),
+      seq("[", sepRepeat($._list_terminator, $._simple_expression), "]"),
 
     // { }
-    // { param param => some calls }
+    // { param, param => some calls }
     function_literal: ($) =>
       seq(
         "{",
@@ -192,7 +221,7 @@ module.exports = grammar({
         field("body", optional($._statement_list)),
         "}"
       ),
-    parameter_list: ($) => repeat1($.identifier),
+    parameter_list: ($) => sepRepeat1($._list_terminator, $.identifier),
 
     _statement_terminator: ($) => choice(/(\n+|;)/),
     _list_terminator: ($) => choice(/(\n+|,)/),

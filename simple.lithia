@@ -12,7 +12,7 @@ some calls
 
 func abc { x => x }
 
-func abc { param param param =>
+func abc { param, param, param =>
     some calls
 }
 
@@ -29,13 +29,15 @@ switch Optional {
 
 func negated { =>
   switch Bool {
-    True: { _ => False },
+    True: { _ =>
+      False 
+    },
     False: { _ => True }
   }
 }
 
 data Functor {
-    map f value
+    map f, value
 }
 
 describe "optional" { it =>
