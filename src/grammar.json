@@ -81,7 +81,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_simple_expression"
+          "name": "_complex_expression"
         }
       ]
     },
@@ -623,6 +623,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "binary_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "unary_expression"
         }
       ]
@@ -631,8 +635,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_argument"
+          "type": "FIELD",
+          "name": "function",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_argument"
+          }
         },
         {
           "type": "SEQ",
@@ -677,8 +685,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_argument"
+          "type": "FIELD",
+          "name": "function",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_argument"
+          }
         },
         {
           "type": "SYMBOL",
@@ -739,20 +751,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_operand_expression"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "-"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_operand_expression"
+                "name": "_argument"
               }
             ]
           }
@@ -1512,7 +1511,7 @@
     },
     "_number": {
       "type": "PATTERN",
-      "value": "[0-9]+"
+      "value": "-?[0-9]+"
     },
     "comment": {
       "type": "TOKEN",

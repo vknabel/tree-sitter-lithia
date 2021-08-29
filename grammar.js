@@ -28,7 +28,7 @@ module.exports = grammar({
         $.data_declaration,
         $.function_declaration,
         $.let_declaration,
-        $._simple_expression
+        $._complex_expression
       ),
     _scope_level_declaration: ($) =>
       choice(
@@ -120,7 +120,7 @@ module.exports = grammar({
         // a b, c, (d e)
         $.complex_invocation_expression,
         // a + b
-        // $.binary_expression,
+        $.binary_expression,
         // !a
         $.unary_expression
       ),
@@ -145,7 +145,10 @@ module.exports = grammar({
     unary_expression: ($) =>
       prec(
         2,
-        choice(seq("!", $._operand_expression), seq("-", $._operand_expression))
+        choice(
+          seq("!", $._argument)
+          //TODO: seq("-", $._argument)
+        )
       ),
     binary_expression: ($) =>
       choice(
@@ -230,7 +233,7 @@ module.exports = grammar({
     _statement_terminator: ($) => choice(/(\n+|;)/),
     _list_terminator: ($) => choice(/(\n+|,)/),
     identifier: ($) => token(seq(letter, repeat(choice(letter, unicodeDigit)))),
-    _number: ($) => /[0-9]+/,
+    _number: ($) => /-?[0-9]+/,
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: ($) =>
