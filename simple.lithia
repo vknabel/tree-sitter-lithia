@@ -22,13 +22,13 @@ enum Optional {
     None
 }
 
-switch Optional {
+type Optional {
     Some: { some => }
     None: { none => }
 } x
 
 func negated { =>
-  switch Bool {
+  type Bool {
     True: { _ =>
       False 
     },

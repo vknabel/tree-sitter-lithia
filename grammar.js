@@ -168,14 +168,14 @@ module.exports = grammar({
         prec.right(4, seq($._operand_expression, "&&", $._operand_expression)),
         prec.right(4, seq($._operand_expression, "||", $._operand_expression))
       ),
-    _argument: ($) => choice($.member_access, $._literal, $.switch_expression),
+    _argument: ($) => choice($.member_access, $._literal, $.type_expression),
     member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),
 
-    switch_expression: ($) =>
-      seq("switch", field("type", $._argument), field("body", $.switch_body)),
-    switch_body: ($) => seq("{", optional($._switch_case_list), "}"),
-    _switch_case_list: ($) => sepRepeat1($._list_terminator, $.switch_case),
-    switch_case: ($) =>
+    type_expression: ($) =>
+      seq("type", field("type", $._argument), field("body", $.type_body)),
+    type_body: ($) => seq("{", optional($._type_case_list), "}"),
+    _type_case_list: ($) => sepRepeat1($._list_terminator, $.type_case),
+    type_case: ($) =>
       seq(
         field("label", $._simple_expression),
         ":",

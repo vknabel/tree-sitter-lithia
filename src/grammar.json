@@ -1028,7 +1028,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "switch_expression"
+          "name": "type_expression"
         }
       ]
     },
@@ -1057,12 +1057,12 @@
         }
       ]
     },
-    "switch_expression": {
+    "type_expression": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "switch"
+          "value": "type"
         },
         {
           "type": "FIELD",
@@ -1077,12 +1077,12 @@
           "name": "body",
           "content": {
             "type": "SYMBOL",
-            "name": "switch_body"
+            "name": "type_body"
           }
         }
       ]
     },
-    "switch_body": {
+    "type_body": {
       "type": "SEQ",
       "members": [
         {
@@ -1094,7 +1094,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_switch_case_list"
+              "name": "_type_case_list"
             },
             {
               "type": "BLANK"
@@ -1107,12 +1107,12 @@
         }
       ]
     },
-    "_switch_case_list": {
+    "_type_case_list": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "switch_case"
+          "name": "type_case"
         },
         {
           "type": "REPEAT",
@@ -1125,7 +1125,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "switch_case"
+                "name": "type_case"
               }
             ]
           }
@@ -1144,7 +1144,7 @@
         }
       ]
     },
-    "switch_case": {
+    "type_case": {
       "type": "SEQ",
       "members": [
         {
