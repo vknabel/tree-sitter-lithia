@@ -5,19 +5,27 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
             {
-              "type": "FIELD",
-              "name": "package",
-              "content": {
-                "type": "SYMBOL",
-                "name": "package_declaration"
-              }
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "package",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "package_declaration"
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_statement_terminator"
+                }
+              ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_statement_terminator"
+              "type": "BLANK"
             }
           ]
         },

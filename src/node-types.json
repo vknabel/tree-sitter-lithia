@@ -770,7 +770,7 @@
     "fields": {
       "package": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "package_declaration",
