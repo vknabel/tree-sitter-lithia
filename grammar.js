@@ -97,7 +97,7 @@ module.exports = grammar({
       seq(
         "enum",
         field("name", $.identifier),
-        field("cases", optional(seq("{", optional($.enum_case_list), "}")))
+        optional(seq("{", field("cases", optional($.enum_case_list)), "}"))
       ),
     enum_case_list: ($) => seq(sepRepeat1($._list_terminator, $._enum_case)),
     _enum_case: ($) =>

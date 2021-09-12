@@ -314,20 +314,12 @@
     "named": true,
     "fields": {
       "cases": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
             "type": "enum_case_list",
             "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
           }
         ]
       },
