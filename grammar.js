@@ -28,6 +28,7 @@ module.exports = grammar({
         $.import_declaration,
         $.enum_declaration,
         $.data_declaration,
+        $.extern_declaration,
         $.function_declaration,
         $.let_declaration,
         $._complex_expression
@@ -90,6 +91,17 @@ module.exports = grammar({
     data_property_function: ($) =>
       seq(field("name", $.identifier), field("parameters", $.parameter_list)),
     // seq($.identifier, repeat(alias($.identifier, $.data_property_parameter))),
+
+    // extern X
+    // extern X { abc, def xyz }
+    extern_declaration: ($) =>
+      seq(
+        "extern",
+        field("name", $.identifier),
+        optional(
+          seq("{", field("properties", optional($.data_property_list)), "}")
+        )
+      ),
 
     // enum X
     // enum X { Abc, enum Def, data X }
@@ -179,7 +191,7 @@ module.exports = grammar({
     _type_case_list: ($) => sepRepeat1($._list_terminator, $.type_case),
     type_case: ($) =>
       seq(
-        field("label", $._simple_expression),
+        field("label", $.identifier),
         ":",
         field("body", $._simple_expression)
       ),

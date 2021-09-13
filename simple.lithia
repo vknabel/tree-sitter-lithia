@@ -10,6 +10,8 @@ let abc = def
 
 some calls
 
+extern String
+
 func abc { x => x }
 
 func abc { param, param, param =>
@@ -19,11 +21,11 @@ func abc { param, param, param =>
 data True
 enum Optional {
     data Some { value }
-    None
+    data None
 }
 
 type Optional {
-    Some: { some => }
+    Some: { some => },
     None: { none => }
 } x
 

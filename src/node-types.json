@@ -336,6 +336,32 @@
     }
   },
   {
+    "type": "extern_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "properties": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "data_property_list",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_declaration",
     "named": true,
     "fields": {
@@ -796,6 +822,10 @@
           "named": true
         },
         {
+          "type": "extern_declaration",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -931,47 +961,7 @@
         "required": true,
         "types": [
           {
-            "type": "array_literal",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "function_literal",
-            "named": true
-          },
-          {
-            "type": "group_literal",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "member_access",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "simple_invocation_expression",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "type_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
             "named": true
           }
         ]
@@ -1182,6 +1172,10 @@
   {
     "type": "escape_sequence",
     "named": true
+  },
+  {
+    "type": "extern",
+    "named": false
   },
   {
     "type": "func",
