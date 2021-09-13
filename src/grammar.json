@@ -1459,8 +1459,13 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_statement_list"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_statement_list"
+                },
+                "named": true,
+                "value": "function_body"
               },
               {
                 "type": "BLANK"

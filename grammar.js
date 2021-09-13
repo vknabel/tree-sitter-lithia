@@ -239,7 +239,7 @@ module.exports = grammar({
       seq(
         "{",
         seq(field("parameters", optional($.parameter_list)), "=>"),
-        field("body", optional($._statement_list)),
+        field("body", optional(alias($._statement_list, $.function_body))),
         "}"
       ),
     parameter_list: ($) => sepRepeat1($._list_terminator, $.identifier),

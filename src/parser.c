@@ -172,7 +172,7 @@ static const char * const ts_symbol_names[] = {
   [sym_enum_declaration] = "enum_declaration",
   [sym_enum_case_list] = "enum_case_list",
   [aux_sym__enum_case] = "_enum_case",
-  [sym__statement_list] = "_statement_list",
+  [sym__statement_list] = "function_body",
   [sym__statement] = "_statement",
   [sym__complex_expression] = "_complex_expression",
   [sym_complex_invocation_expression] = "complex_invocation_expression",
@@ -544,7 +544,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [sym__statement_list] = {
-    .visible = false,
+    .visible = true,
     .named = true,
   },
   [sym__statement] = {
