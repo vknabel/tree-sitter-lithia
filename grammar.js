@@ -48,11 +48,11 @@ module.exports = grammar({
     import_declaration: ($) =>
       seq(
         "import",
-        field("name", $._import_module),
-        field("members", optional($._import_members))
+        field("name", $.import_module),
+        field("members", optional($.import_members))
       ),
-    _import_module: ($) => sepRepeat1(".", $.identifier),
-    _import_members: ($) =>
+    import_module: ($) => sepRepeat1(".", $.identifier),
+    import_members: ($) =>
       seq("{", sepRepeat($._list_terminator, $.identifier), "}"),
 
     // let abc def

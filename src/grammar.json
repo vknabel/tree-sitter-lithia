@@ -130,7 +130,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "_import_module"
+            "name": "import_module"
           }
         },
         {
@@ -141,7 +141,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_import_members"
+                "name": "import_members"
               },
               {
                 "type": "BLANK"
@@ -151,7 +151,7 @@
         }
       ]
     },
-    "_import_module": {
+    "import_module": {
       "type": "SEQ",
       "members": [
         {
@@ -188,7 +188,7 @@
         }
       ]
     },
-    "_import_members": {
+    "import_members": {
       "type": "SEQ",
       "members": [
         {
