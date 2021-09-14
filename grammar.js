@@ -62,7 +62,7 @@ module.exports = grammar({
         "let",
         field("name", $.identifier),
         optional("="),
-        field("value", $._simple_expression)
+        field("value", $._complex_expression)
       ),
 
     // func
@@ -94,12 +94,16 @@ module.exports = grammar({
 
     // extern X
     // extern X { abc, def xyz }
+    // extern f a, b, c
     extern_declaration: ($) =>
       seq(
         "extern",
         field("name", $.identifier),
         optional(
-          seq("{", field("properties", optional($.data_property_list)), "}")
+          choice(
+            seq("{", field("properties", optional($.data_property_list)), "}"),
+            $.parameter_list
+          )
         )
       ),
 
@@ -238,7 +242,7 @@ module.exports = grammar({
     function_literal: ($) =>
       seq(
         "{",
-        seq(field("parameters", $.parameter_list), "=>"),
+        seq(field("parameters", optional($.parameter_list)), "=>"),
         field("body", optional(alias($._statement_list, $.function_body))),
         "}"
       ),

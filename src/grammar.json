@@ -278,7 +278,7 @@
           "name": "value",
           "content": {
             "type": "SYMBOL",
-            "name": "_simple_expression"
+            "name": "_complex_expression"
           }
         }
       ]
@@ -465,31 +465,40 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
+              "type": "CHOICE",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "{"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "properties",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "data_property_list"
-                      },
-                      {
-                        "type": "BLANK"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "{"
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "properties",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "data_property_list"
+                          },
+                          {
+                            "type": "BLANK"
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "}"
+                    }
+                  ]
                 },
                 {
-                  "type": "STRING",
-                  "value": "}"
+                  "type": "SYMBOL",
+                  "name": "parameter_list"
                 }
               ]
             },
@@ -1434,8 +1443,16 @@
               "type": "FIELD",
               "name": "parameters",
               "content": {
-                "type": "SYMBOL",
-                "name": "parameter_list"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "parameter_list"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               }
             },
             {
