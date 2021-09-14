@@ -238,7 +238,7 @@ module.exports = grammar({
     function_literal: ($) =>
       seq(
         "{",
-        seq(field("parameters", optional($.parameter_list)), "=>"),
+        seq(field("parameters", $.parameter_list), "=>"),
         field("body", optional(alias($._statement_list, $.function_body))),
         "}"
       ),

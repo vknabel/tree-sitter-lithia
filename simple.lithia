@@ -29,13 +29,13 @@ type Optional {
     None: { none => }
 } x
 
-func negated { =>
+func negated { flag =>
   type Bool {
     True: { _ =>
       False 
     },
     False: { _ => True }
-  }
+  } flag
 }
 
 data Functor {
