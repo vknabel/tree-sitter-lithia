@@ -36,6 +36,9 @@ tests.test "when true succeeds", { fail =>
         True: { true => "" },
         False: { false => fail "should be True" }
     }
+
+    func incr { i => i + 1 }
+    unless incr 1 == 2, fail "(incr 1) == 2"
 }
 
 

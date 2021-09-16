@@ -13,15 +13,15 @@ module.exports = grammar({
     source_file: ($) =>
       seq(
         optional(
-          seq(field("package", $.package_declaration), $._statement_terminator)
+          seq(field("module", $.module_declaration), $._statement_terminator)
         ),
         repeat(seq($._top_level_declaration, $._statement_terminator))
         // repeat(seq($.statement, $._statement_terminator))
         // repeat($.test_definition)
       ),
 
-    // package example
-    package_declaration: ($) => seq("package", field("name", $.identifier)),
+    // module example
+    module_declaration: ($) => seq("module", field("name", $.identifier)),
 
     _top_level_declaration: ($) =>
       choice(
@@ -145,21 +145,24 @@ module.exports = grammar({
     complex_invocation_expression: ($) =>
       seq(
         field("function", $._argument),
-        sepRepeat1(",", $._simple_expression)
+        sepRepeat1(",", $._parameter_expression)
       ),
+    _parameter_expression: ($) =>
+      choice($._simple_expression, $.binary_expression),
     // a b
     simple_invocation_expression: ($) =>
-      seq(field("function", $._argument), $._argument),
+      prec.left(
+        2,
+        seq(
+          field("function", $._argument),
+          choice($.unary_expression, $._argument)
+        )
+      ),
 
     _simple_expression: ($) =>
-      choice(
-        $._argument,
-        $.simple_invocation_expression,
-        $.unary_expression,
-        $.binary_expression
-      ),
+      choice($._argument, $.simple_invocation_expression),
     _operand_expression: ($) =>
-      choice($._argument, $.unary_expression, $.binary_expression),
+      choice($._simple_expression, $.unary_expression, $.binary_expression),
     unary_expression: ($) =>
       prec(
         2,
