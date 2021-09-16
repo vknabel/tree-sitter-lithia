@@ -12,6 +12,10 @@
           "named": true
         },
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -41,6 +45,10 @@
         },
         {
           "type": "type_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -135,10 +143,6 @@
         },
         {
           "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "simple_invocation_expression",
           "named": true
         },
         {
@@ -241,6 +245,10 @@
         },
         {
           "type": "type_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -755,7 +763,12 @@
     }
   },
   {
-    "type": "module_declaration",
+    "type": "number_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "package_declaration",
     "named": true,
     "fields": {
       "name": {
@@ -769,11 +782,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "number_literal",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "parameter_list",
@@ -868,10 +876,6 @@
         {
           "type": "type_expression",
           "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
         }
       ]
     }
@@ -880,12 +884,12 @@
     "type": "source_file",
     "named": true,
     "fields": {
-      "module": {
+      "package": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "module_declaration",
+            "type": "package_declaration",
             "named": true
           }
         ]
@@ -1009,6 +1013,10 @@
             "named": true
           },
           {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -1038,6 +1046,10 @@
           },
           {
             "type": "type_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -1291,7 +1303,7 @@
     "named": false
   },
   {
-    "type": "module",
+    "type": "package",
     "named": false
   },
   {
