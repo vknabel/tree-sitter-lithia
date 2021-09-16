@@ -164,27 +164,111 @@ module.exports = grammar({
       prec(
         2,
         choice(
-          seq("!", $._argument)
+          seq(field("operator", "!"), $._argument)
           //TODO: seq("-", $._argument)
         )
       ),
     binary_expression: ($) =>
       choice(
-        prec.left(7, seq($._operand_expression, "*", $._operand_expression)),
-        prec.left(7, seq($._operand_expression, "/", $._operand_expression)),
+        prec.left(
+          7,
+          seq(
+            $._operand_expression,
+            field("operator", "*"),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          7,
+          seq(
+            $._operand_expression,
+            field("operator", "/"),
+            $._operand_expression
+          )
+        ),
 
-        prec.left(6, seq($._operand_expression, "+", $._operand_expression)),
-        prec.left(6, seq($._operand_expression, "-", $._operand_expression)),
+        prec.left(
+          6,
+          seq(
+            $._operand_expression,
+            field("operator", "+"),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          6,
+          seq(
+            $._operand_expression,
+            field("operator", "-"),
+            $._operand_expression
+          )
+        ),
 
-        prec.left(4, seq($._operand_expression, "==", $._operand_expression)),
-        prec.left(4, seq($._operand_expression, "!=", $._operand_expression)),
-        prec.left(4, seq($._operand_expression, ">=", $._operand_expression)),
-        prec.left(4, seq($._operand_expression, ">", $._operand_expression)),
-        prec.left(4, seq($._operand_expression, "<", $._operand_expression)),
-        prec.left(4, seq($._operand_expression, "<=", $._operand_expression)),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "=="),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "!="),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", ">="),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", ">"),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "<"),
+            $._operand_expression
+          )
+        ),
+        prec.left(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "<="),
+            $._operand_expression
+          )
+        ),
 
-        prec.right(4, seq($._operand_expression, "&&", $._operand_expression)),
-        prec.right(4, seq($._operand_expression, "||", $._operand_expression))
+        prec.right(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "&&"),
+            $._operand_expression
+          )
+        ),
+        prec.right(
+          4,
+          seq(
+            $._operand_expression,
+            field("operator", "||"),
+            $._operand_expression
+          )
+        )
       ),
     _argument: ($) => choice($.member_access, $._literal, $.type_expression),
     member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),

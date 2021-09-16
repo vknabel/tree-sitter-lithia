@@ -821,8 +821,12 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": "!"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "!"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -847,8 +851,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "*"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "*"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -868,8 +876,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "/"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "/"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -889,8 +901,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "+"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "+"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -910,8 +926,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "-"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "-"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -931,8 +951,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "=="
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "=="
+                }
               },
               {
                 "type": "SYMBOL",
@@ -952,8 +976,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "!="
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "!="
+                }
               },
               {
                 "type": "SYMBOL",
@@ -973,8 +1001,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": ">="
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": ">="
+                }
               },
               {
                 "type": "SYMBOL",
@@ -994,8 +1026,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": ">"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": ">"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -1015,8 +1051,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "<"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "<"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -1036,8 +1076,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "<="
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "<="
+                }
               },
               {
                 "type": "SYMBOL",
@@ -1057,8 +1101,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "&&"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "&&"
+                }
               },
               {
                 "type": "SYMBOL",
@@ -1078,8 +1126,12 @@
                 "name": "_operand_expression"
               },
               {
-                "type": "STRING",
-                "value": "||"
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "STRING",
+                  "value": "||"
+                }
               },
               {
                 "type": "SYMBOL",

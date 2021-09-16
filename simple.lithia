@@ -4,11 +4,6 @@ import tests
 import lists
 import strings
 
-extern a b, c
-extern a {
-    A
-}
-
 tests.test "booleans are cool", { fail =>
     with True, type Bool {
         True: { _ => },
@@ -28,21 +23,20 @@ tests.test "any in enums matches all types", { fail =>
         Any
     }
 
-    // sadly a with "", type X {} fails
-    let isCorrect = type AnyEnum {
+    let isCorrect = with "should be any", type AnyEnum {
         Int: { _ => False },
         Any: { _ => True }
-    } "should be any"
+    }
     unless isCorrect, fail "should not be the case"
 }
 
 tests.test "when true succeeds", { fail =>
     let isTrue = when True, True
     with isTrue, type Bool {
-        True: { true => },
+        True: { true => "" },
         False: { false => fail "should be True" }
     }
 }
 
 
-when tests.enabled, tests.runTests tests.testCases
+when tests.enabled, tests.runTests
