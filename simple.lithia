@@ -1,4 +1,4 @@
-package example
+module example
 
 import tests
 import lists

@@ -13,15 +13,15 @@ module.exports = grammar({
     source_file: ($) =>
       seq(
         optional(
-          seq(field("package", $.package_declaration), $._statement_terminator)
+          seq(field("module", $.module_declaration), $._statement_terminator)
         ),
         repeat(seq($._top_level_declaration, $._statement_terminator))
         // repeat(seq($.statement, $._statement_terminator))
         // repeat($.test_definition)
       ),
 
-    // package example
-    package_declaration: ($) => seq("package", field("name", $.identifier)),
+    // module example
+    module_declaration: ($) => seq("module", field("name", $.identifier)),
 
     _top_level_declaration: ($) =>
       choice(

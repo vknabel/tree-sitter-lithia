@@ -12,10 +12,10 @@
               "members": [
                 {
                   "type": "FIELD",
-                  "name": "package",
+                  "name": "module",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "package_declaration"
+                    "name": "module_declaration"
                   }
                 },
                 {
@@ -47,12 +47,12 @@
         }
       ]
     },
-    "package_declaration": {
+    "module_declaration": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "package"
+          "value": "module"
         },
         {
           "type": "FIELD",
