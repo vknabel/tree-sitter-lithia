@@ -11,12 +11,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "FIELD",
-                  "name": "module",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "module_declaration"
-                  }
+                  "type": "SYMBOL",
+                  "name": "module_declaration"
                 },
                 {
                   "type": "SYMBOL",

@@ -12,9 +12,7 @@ module.exports = grammar({
   rules: {
     source_file: ($) =>
       seq(
-        optional(
-          seq(field("module", $.module_declaration), $._statement_terminator)
-        ),
+        optional(seq($.module_declaration, $._statement_terminator)),
         repeat(seq($._top_level_declaration, $._statement_terminator))
         // repeat(seq($.statement, $._statement_terminator))
         // repeat($.test_definition)

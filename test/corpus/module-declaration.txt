@@ -1,0 +1,10 @@
+===================
+Module declaration
+===================
+
+module myModule
+
+---
+(source_file
+    (module_declaration
+        name: (identifier)))

@@ -1,0 +1,14 @@
+============
+Multiplication has higher precedence than addition
+============
+
+a * 2 + 1
+
+---
+(source_file
+    (binary_expression
+        (binary_expression
+            (identifier)
+            (number_literal))
+        (number_literal)
+        ))

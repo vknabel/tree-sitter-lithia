@@ -883,18 +883,7 @@
   {
     "type": "source_file",
     "named": true,
-    "fields": {
-      "module": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "module_declaration",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": false,
@@ -949,6 +938,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "module_declaration",
           "named": true
         },
         {

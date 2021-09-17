@@ -1,0 +1,75 @@
+==================
+Complex Invocation Expression
+==================
+
+f a, b, c
+
+---
+
+
+(source_file
+    (complex_invocation_expression
+        function: (identifier)
+        (identifier)
+        (identifier)
+        (identifier)))
+
+==================
+Complex Invocation Expression with simple invocation parameter
+==================
+
+f a b, c d
+
+---
+
+
+(source_file
+    (complex_invocation_expression
+        function: (identifier)
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))))
+
+==================
+Complex Invocation Expression with operator parameter
+==================
+
+f a == b, c
+
+---
+
+
+(source_file
+    (complex_invocation_expression
+        function: (identifier)
+        (binary_expression
+            (identifier)
+            (identifier))
+        (identifier)))
+
+==================
+Complex Invocation Expression with simple invocation operator parameter
+==================
+
+f (a b) == c, d
+
+---
+
+
+(source_file
+    (complex_invocation_expression
+        function: (identifier)
+        (binary_expression
+            (group_literal
+                expression:
+                (complex_invocation_expression
+                    function: (identifier)
+                    (identifier))
+            )
+            (identifier))
+        (identifier)
+    )
+)
