@@ -391,6 +391,61 @@
     }
   },
   {
+    "type": "expression_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "complex_invocation_expression",
+          "named": true
+        },
+        {
+          "type": "function_literal",
+          "named": true
+        },
+        {
+          "type": "group_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "type_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "extern_declaration",
     "named": true,
     "fields": {
@@ -435,18 +490,6 @@
       "required": true,
       "types": [
         {
-          "type": "array_literal",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "complex_invocation_expression",
-          "named": true
-        },
-        {
           "type": "data_declaration",
           "named": true
         },
@@ -455,43 +498,15 @@
           "named": true
         },
         {
+          "type": "expression_statement",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
         {
-          "type": "function_literal",
-          "named": true
-        },
-        {
-          "type": "group_literal",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "let_declaration",
-          "named": true
-        },
-        {
-          "type": "member_access",
-          "named": true
-        },
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "type_expression",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]

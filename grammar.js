@@ -127,7 +127,10 @@ module.exports = grammar({
     _statement_list: ($) =>
       seq(sepRepeat1($._statement_terminator, $._statement)),
     _statement: ($) =>
-      choice($._scope_level_declaration, $._complex_expression),
+      choice(
+        $._scope_level_declaration,
+        alias($._complex_expression, $.expression_statement)
+      ),
 
     _complex_expression: ($) =>
       choice(

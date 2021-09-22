@@ -676,8 +676,13 @@
           "name": "_scope_level_declaration"
         },
         {
-          "type": "SYMBOL",
-          "name": "_complex_expression"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_complex_expression"
+          },
+          "named": true,
+          "value": "expression_statement"
         }
       ]
     },
