@@ -100,7 +100,7 @@ module.exports = grammar({
         optional(
           choice(
             seq("{", field("properties", optional($.data_property_list)), "}"),
-            $.parameter_list
+            field("parameters", $.parameter_list)
           )
         )
       ),

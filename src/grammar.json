@@ -493,8 +493,12 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "parameter_list"
+                  "type": "FIELD",
+                  "name": "parameters",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "parameter_list"
+                  }
                 }
               ]
             },
@@ -1668,7 +1672,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[^*]*\\*+([^\\/*][^*]*\\*+)*"
+                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
               },
               {
                 "type": "STRING",
