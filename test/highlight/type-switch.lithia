@@ -1,0 +1,14 @@
+extern String {
+//     ^ type.builtin
+    concat
+    length
+}
+
+type Tree {
+// <- keyword
+//   ^ type
+    String: print,
+//  ^ type.builtin
+    Branch: print
+//  ^ type
+} ""

@@ -1,16 +1,21 @@
-package prelude
+module prelude
 
-import api
-let a = b
-x.b
+import api {
+    a
+    b
+}
 
+enum Example {
+    data Local
+    Optional
+}
 
 func reduceList { accumulator, initial, list => 
-    switch List (
+    type List {
         Cons: { cons =>
             let accumulatedRest = reduceList accumulator, initial, cons.tail
             accumulator accumulatedRest, cons.head
         },
         Nil: { nil => initial }
-    )
+    }
  }

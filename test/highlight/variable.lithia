@@ -1,0 +1,14 @@
+let greeting = "Hello World"
+// <- keyword
+//  ^ variable
+//             ^ string
+
+greeting.length
+// <- variable
+//       ^ property
+
+greeting.concat "!"
+// <- variable
+//      ^ punctuation
+//       ^ function
+//              ^ string

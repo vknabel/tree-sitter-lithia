@@ -13,5 +13,14 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.0"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.lithia",
+      "file-types": [
+        "lithia"
+      ],
+      "first-line-regex": "#!-*\\blithia$"
+    }
+  ]
 }

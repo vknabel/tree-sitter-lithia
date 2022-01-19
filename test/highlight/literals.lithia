@@ -1,0 +1,32 @@
+"string"
+// <- string
+
+42
+// <- constant.numeric
+// 3.14 not supported, yet
+
+identifier
+// ^ variable
+
+identifier.prop
+// ^ variable
+//        ^ punctuation
+
+// comment
+// <- comment
+
+/* comment */
+// <- comment
+
+[one, and, another]
+// <- punctuation.bracket
+//                ^ punctuation.bracket
+
+(other)
+// <- punctuation.bracket
+//    ^ punctuation.bracket
+
+{ => }
+// <- punctuation.bracket
+// ^ operator
+//   ^ punctuation.bracket

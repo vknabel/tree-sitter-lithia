@@ -1,0 +1,21 @@
+extern const
+// <- keyword
+//     ^ variable.builtin
+const
+// <- variable.builtin
+
+extern function a
+// <- keyword
+//     ^ function.builtin
+//              ^ variable.parameter
+function
+// <- function.builtin
+
+extern Type {
+// <- keyword
+//     ^ type.builtin
+    atLeastOne
+//  ^ property
+}
+Type
+// <- type.builtin

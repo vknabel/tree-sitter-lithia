@@ -269,7 +269,7 @@ module.exports = grammar({
         )
       ),
     _argument: ($) => choice($.member_access, $._literal, $.type_expression),
-    member_access: ($) => seq($._literal, repeat1(seq(".", $.identifier))),
+    member_access: ($) => seq(field("object", $._literal), field("members", repeat1(seq(".", alias($.identifier, $.member_identifier))))),
 
     type_expression: ($) =>
       seq("type", field("type", $._argument), field("body", $.type_body)),

@@ -1,0 +1,25 @@
+data Leaf {
+// <- keyword
+//   ^ type
+    value
+//  ^ property
+}
+
+enum Tree {
+// <- keyword
+//   ^ type
+    data Branch {
+//  ^ keyword
+//       ^ type
+        left
+//      ^ property
+        right
+//      ^ property
+    }
+    Leaf
+//  ^ type
+}
+
+Leaf "leaf"
+// <- type
+//   ^ string

@@ -1,0 +1,17 @@
+import prelude
+// <- keyword
+//     ^ variable
+
+import prelude {
+// <- keyword
+//     ^ variable
+    Int
+//  ^ variable
+    print
+//  ^ variable
+}
+
+import myapp.private
+// <- keyword
+//     ^ variable
+//           ^ variable

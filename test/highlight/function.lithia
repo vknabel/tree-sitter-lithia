@@ -1,0 +1,20 @@
+func example { abc, def =>
+// <- keyword
+//   ^ function
+//             ^ variable.parameter
+//                  ^ variable.parameter
+    let xyz = global
+//  ^ keyword
+//      ^ variable
+//            ^ variable
+    print abc, def, xyz
+//  ^ function
+//        ^ variable.parameter
+//             ^ variable.parameter
+//                  ^ variable
+}
+
+example abc, def
+// <- function
+//      ^ variable
+//           ^ variable

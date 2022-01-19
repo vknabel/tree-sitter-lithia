@@ -1,0 +1,38 @@
+{ => }
+// ^ operator
+
+!left
+// <- operator
+
+left * right
+//   ^ operator
+
+left / right
+//   ^ operator
+
+left + right
+//   ^ operator
+
+left - right
+//   ^ operator
+
+left == right
+//   ^ operator
+
+left != right
+//   ^ operator
+
+left >= right
+//   ^ operator
+
+left > right
+//   ^ operator
+
+left <= right
+//   ^ operator
+
+left && right
+//   ^ operator
+
+left || right
+//   ^ operator
