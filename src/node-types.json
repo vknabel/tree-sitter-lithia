@@ -315,6 +315,10 @@
       "required": true,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "data_property_function",
           "named": true
         },
@@ -349,6 +353,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "data_declaration",
           "named": true

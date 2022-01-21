@@ -82,7 +82,7 @@ module.exports = grammar({
         )
       ),
     data_property_list: ($) =>
-      seq(sepRepeat1($._statement_terminator, $._data_property)),
+      seq(optional($.comment), sepRepeat1($._statement_terminator, $._data_property)),
     _data_property: ($) =>
       choice($.data_property_value, $.data_property_function),
     data_property_value: ($) => field("name", $.identifier),
@@ -113,7 +113,7 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(seq("{", field("cases", optional($.enum_case_list)), "}"))
       ),
-    enum_case_list: ($) => seq(sepRepeat1($._list_terminator, $._enum_case)),
+    enum_case_list: ($) => seq(optional($.comment), sepRepeat1($._list_terminator, $._enum_case)),
     _enum_case: ($) =>
       repeat1(
         choice(

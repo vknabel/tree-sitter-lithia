@@ -1,0 +1,40 @@
+============
+Enum decl comments for first case
+============
+
+enum Optional {
+    // comment
+    Some
+    // another comment
+    None
+}
+
+---
+(source_file
+    (enum_declaration
+        name: (identifier)
+        cases: (enum_case_list
+            (comment)
+            (enum_case_reference)
+            (comment)
+            (enum_case_reference))
+        ))
+
+============
+Data decl comments for first case
+============
+
+data Some {
+    // comment
+    value
+}
+
+---
+(source_file
+    (data_declaration
+        name: (identifier)
+        properties: (data_property_list
+            (comment)
+            (data_property_value
+                name: (identifier)))
+        ))
