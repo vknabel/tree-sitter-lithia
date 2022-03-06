@@ -1,0 +1,69 @@
+===================
+int without signs
+===================
+
+1
+
+---
+(source_file
+    (int_literal))
+
+===================
+positive int
+===================
+
++42
+
+---
+(source_file
+    (int_literal))
+
+===================
+negative int
+===================
+
+-1337
+
+---
+(source_file
+    (int_literal))
+
+===================
+float without signs
+===================
+
+1.0
+
+---
+(source_file
+    (float_literal))
+
+===================
+positive float
+===================
+
++4.2
+
+---
+(source_file
+    (float_literal))
+
+===================
+negative float
+===================
+
+-13.37
+
+---
+(source_file
+    (float_literal))
+
+===================
+float with exponent
+===================
+
+-13e37
+
+---
+(source_file
+    (float_literal))

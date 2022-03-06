@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -28,11 +32,11 @@
           "named": true
         },
         {
-          "type": "member_access",
+          "type": "int_literal",
           "named": true
         },
         {
-          "type": "number_literal",
+          "type": "member_access",
           "named": true
         },
         {
@@ -126,6 +130,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -138,11 +146,11 @@
           "named": true
         },
         {
-          "type": "member_access",
+          "type": "int_literal",
           "named": true
         },
         {
-          "type": "number_literal",
+          "type": "member_access",
           "named": true
         },
         {
@@ -173,6 +181,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -185,11 +197,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -216,6 +228,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -228,11 +244,11 @@
           "named": true
         },
         {
-          "type": "member_access",
+          "type": "int_literal",
           "named": true
         },
         {
-          "type": "number_literal",
+          "type": "member_access",
           "named": true
         },
         {
@@ -435,6 +451,11 @@
     }
   },
   {
+    "type": "float_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "function_body",
     "named": true,
     "fields": {},
@@ -463,6 +484,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -479,15 +504,15 @@
           "named": true
         },
         {
+          "type": "int_literal",
+          "named": true
+        },
+        {
           "type": "let_declaration",
           "named": true
         },
         {
           "type": "member_access",
-          "named": true
-        },
-        {
-          "type": "number_literal",
           "named": true
         },
         {
@@ -578,6 +603,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -590,11 +619,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -684,6 +713,11 @@
     }
   },
   {
+    "type": "int_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "let_declaration",
     "named": true,
     "fields": {
@@ -714,6 +748,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -726,11 +764,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -776,6 +814,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -788,7 +830,7 @@
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "int_literal",
             "named": true
           },
           {
@@ -814,11 +856,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "number_literal",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "parameter_list",
@@ -848,6 +885,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -860,11 +901,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -887,6 +928,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -899,11 +944,11 @@
           "named": true
         },
         {
-          "type": "member_access",
+          "type": "int_literal",
           "named": true
         },
         {
-          "type": "number_literal",
+          "type": "member_access",
           "named": true
         },
         {
@@ -950,6 +995,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -970,6 +1019,10 @@
           "named": true
         },
         {
+          "type": "int_literal",
+          "named": true
+        },
+        {
           "type": "let_declaration",
           "named": true
         },
@@ -979,10 +1032,6 @@
         },
         {
           "type": "module_declaration",
-          "named": true
-        },
-        {
-          "type": "number_literal",
           "named": true
         },
         {
@@ -1047,6 +1096,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -1059,11 +1112,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -1119,6 +1172,10 @@
             "named": true
           },
           {
+            "type": "float_literal",
+            "named": true
+          },
+          {
             "type": "function_literal",
             "named": true
           },
@@ -1131,11 +1188,11 @@
             "named": true
           },
           {
-            "type": "member_access",
+            "type": "int_literal",
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "member_access",
             "named": true
           },
           {
@@ -1174,6 +1231,10 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "function_literal",
           "named": true
         },
@@ -1186,11 +1247,11 @@
           "named": true
         },
         {
-          "type": "member_access",
+          "type": "int_literal",
           "named": true
         },
         {
-          "type": "number_literal",
+          "type": "member_access",
           "named": true
         },
         {

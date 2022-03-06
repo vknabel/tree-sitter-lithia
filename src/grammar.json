@@ -1407,7 +1407,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "number_literal"
+          "name": "_number_literal"
         },
         {
           "type": "SYMBOL",
@@ -1509,9 +1509,26 @@
         }
       ]
     },
-    "number_literal": {
+    "_number_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "int_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float_literal"
+        }
+      ]
+    },
+    "int_literal": {
       "type": "SYMBOL",
-      "name": "_number"
+      "name": "_int"
+    },
+    "float_literal": {
+      "type": "SYMBOL",
+      "name": "_float"
     },
     "array_literal": {
       "type": "SEQ",
@@ -1732,8 +1749,25 @@
       }
     },
     "_number": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_int"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_float"
+        }
+      ]
+    },
+    "_int": {
       "type": "PATTERN",
-      "value": "-?[0-9]+"
+      "value": "[+\\-]?[0-9]+"
+    },
+    "_float": {
+      "type": "PATTERN",
+      "value": "[+\\-]?(?:(?:0|[1-9]\\d*)(?:\\.\\d*)?|\\.\\d+)(?:\\d[eE][+\\-]?\\d+)?"
     },
     "comment": {
       "type": "TOKEN",

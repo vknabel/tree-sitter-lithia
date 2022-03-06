@@ -15,6 +15,10 @@
     "grammar",
     "lithia"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vknabel/tree-sitter-lithia"
+  },
   "dependencies": {
     "nan": "^2.15.0"
   },

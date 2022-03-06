@@ -294,7 +294,7 @@ module.exports = grammar({
         $.string_literal,
         $.group_literal,
         $.function_literal,
-        $.number_literal,
+        $._number_literal,
         $.array_literal
       ),
     string_literal: ($) =>
@@ -321,7 +321,9 @@ module.exports = grammar({
       ),
     group_literal: ($) =>
       seq("(", field("expression", $._complex_expression), ")"),
-    number_literal: ($) => $._number,
+    _number_literal: ($) => choice($.int_literal, $.float_literal),
+    int_literal: ($) => $._int,
+    float_literal: ($) => $._float,
     array_literal: ($) =>
       seq("[", sepRepeat($._list_terminator, $._simple_expression), "]"),
 
@@ -339,7 +341,9 @@ module.exports = grammar({
     _statement_terminator: ($) => choice(/(\n+|;)/),
     _list_terminator: ($) => choice(/(\n+|,)/),
     identifier: ($) => token(seq(letter, repeat(choice(letter, unicodeDigit)))),
-    _number: ($) => /-?[0-9]+/,
+    _number: ($) => choice($._int, $._float),
+    _int: ($) => /[+\-]?[0-9]+/,
+    _float: ($) => /[+\-]?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?/,
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: ($) =>
