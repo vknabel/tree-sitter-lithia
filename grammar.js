@@ -12,11 +12,12 @@ module.exports = grammar({
   rules: {
     source_file: ($) =>
       seq(
+        optional($._shebang),
         optional(seq($.module_declaration, $._statement_terminator)),
         repeat(seq($._top_level_declaration, $._statement_terminator))
-        // repeat(seq($.statement, $._statement_terminator))
-        // repeat($.test_definition)
       ),
+
+    _shebang: ($) => token(seq("#!", /.*/)),
 
     // module example
     module_declaration: ($) => seq("module", field("name", $.identifier)),
@@ -43,9 +44,14 @@ module.exports = grammar({
     // import some.api {
     //     fetch
     // }
+    // import alias = some.api
+    // import alias = some.api {
+    //     fetch
+    // }
     import_declaration: ($) =>
       seq(
         "import",
+        field("alias", optional(seq($.identifier, "="))),
         field("name", $.import_module),
         field("members", optional($.import_members))
       ),

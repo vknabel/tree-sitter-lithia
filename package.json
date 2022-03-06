@@ -4,7 +4,7 @@
   "description": "Tree-sitter-grammar for Lithia",
   "main": "bindings/node",
   "scripts": {
-    "test": "tree-sitter test",
+    "test": "tree-sitter generate && tree-sitter test",
     "gen": "tree-sitter generate",
     "ui": "tree-sitter build-wasm && tree-sitter web-ui"
   },

@@ -1,0 +1,99 @@
+==================
+import nested module
+==================
+
+import actual.module
+
+---
+
+(source_file
+    (import_declaration
+        name: (import_module (identifier) (identifier))))
+
+==================
+import alias
+==================
+
+import alias = actual.module
+
+---
+
+(source_file
+    (import_declaration
+        alias: (identifier)
+        name: (import_module (identifier) (identifier))))
+
+
+==================
+import alias with multiline members
+==================
+
+import alias = actual.module {
+    member1
+    member2
+}
+
+---
+
+(source_file
+    (import_declaration
+        alias: (identifier)
+        name: (import_module (identifier) (identifier))
+        members: (import_members
+            (identifier)
+            (identifier))))
+
+
+==================
+import alias with comma-sep members
+==================
+
+import alias = actual.module {
+    member1, member2
+}
+
+---
+
+(source_file
+    (import_declaration
+        alias: (identifier)
+        name: (import_module (identifier) (identifier))
+        members: (import_members
+            (identifier)
+            (identifier))))
+
+==================
+import no-alias with comma-sep members
+==================
+
+import actual.module {
+    member1, member2
+}
+
+---
+
+(source_file
+    (import_declaration
+        name: (import_module (identifier) (identifier))
+        members: (import_members
+            (identifier)
+            (identifier))))
+
+==================
+import no-alias with multiline members
+==================
+
+import actual.module {
+    member1
+    member2
+}
+
+---
+
+(source_file
+    (import_declaration
+        name: (import_module (identifier) (identifier))
+        members: (import_members
+            (identifier)
+            (identifier))))
+

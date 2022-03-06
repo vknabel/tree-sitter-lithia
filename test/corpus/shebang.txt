@@ -1,0 +1,19 @@
+==================
+Shebang #! only
+==================
+#!/usr/bin/env lithia
+
+---
+
+(source_file)
+
+==================
+Shebang with comment
+==================
+#!/usr/bin/env lithia
+// module
+
+---
+
+(source_file
+    (comment))
