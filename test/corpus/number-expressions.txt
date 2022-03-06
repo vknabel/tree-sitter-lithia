@@ -12,23 +12,10 @@ simple binary_expression with minus and spaces
             (int_literal))))
 
 ============
-simple binary_expression with minus, without spaces
-============
-
-(ok-1)
-
----
-(source_file
-    (group_literal 
-        expression: (binary_expression 
-            (identifier)
-            (int_literal))))
-
-============
 simple binary_expression with plus, without spaces
 ============
 
-(ok-1)
+(ok+1)
 
 ---
 (source_file
@@ -54,13 +41,12 @@ simple binary_expression with plus and spaces
 binary_expression prefix minus group
 ============
 
-(ok + -(1))
+(ok + (-1))
 
 ---
 (source_file
     (group_literal 
         expression: (binary_expression 
             (identifier)
-            (unary_expression
-                (group_literal
-                expression: (int_literal))))))
+            (group_literal
+            expression: (int_literal)))))

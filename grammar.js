@@ -139,10 +139,10 @@ module.exports = grammar({
       choice(
         // a
         $._argument,
-        // a + b
-        $.binary_expression,
         // a b, c, (d e)
         $.complex_invocation_expression,
+        // a + b
+        $.binary_expression,
         // !a
         $.unary_expression
       ),
@@ -163,14 +163,12 @@ module.exports = grammar({
         $.binary_expression
       ),
     _operand_expression: ($) =>
-      prec.left(choice($._argument, $.unary_expression, $.binary_expression)),
+      choice($._argument, $.unary_expression, $.binary_expression),
     unary_expression: ($) =>
       prec(
         2,
         choice(
           seq(field("operator", "!"), $._argument),
-          seq(field("operator", "+"), $._non_number_argument),
-          seq(field("operator", "-"), $._non_number_argument),
         )
       ),
     binary_expression: ($) =>
@@ -276,8 +274,7 @@ module.exports = grammar({
         )
       ),
     _argument: ($) => choice($.member_access, $._literal, $.type_expression),
-    _non_number_argument: ($) => choice($.member_access, $._non_number_literal, $.type_expression),
-    member_access: ($) => seq(field("object", $._non_number_literal), field("members", repeat1(seq(".", alias($.identifier, $.member_identifier))))),
+    member_access: ($) => seq(field("object", $._literal), field("members", repeat1(seq(".", alias($.identifier, $.member_identifier))))),
 
     type_expression: ($) =>
       seq("type", field("type", $._argument), field("body", $.type_body)),
@@ -297,14 +294,6 @@ module.exports = grammar({
         $.group_literal,
         $.function_literal,
         $._number_literal,
-        $.array_literal
-      ),
-    _non_number_literal: ($) =>
-      choice(
-        $.identifier,
-        $.string_literal,
-        $.group_literal,
-        $.function_literal,
         $.array_literal
       ),
     string_literal: ($) =>
@@ -352,8 +341,8 @@ module.exports = grammar({
     _list_terminator: ($) => choice(/(\n+|,)/),
     identifier: ($) => token(seq(letter, repeat(choice(letter, unicodeDigit)))),
     _number: ($) => choice($._int, $._float),
-    _int: ($) => seq(optional(choice("+", "-")), /[0-9]+/),
-    _float: ($) => seq(optional(choice("+", "-")), /(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?/),
+    _int: ($) => /-?[0-9]+/,
+    _float: ($) => /-?(?:(?:0|[1-9]\d*)(?:\.\d*)?|\.\d+)(?:\d[eE][+\-]?\d+)?/,
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: ($) =>

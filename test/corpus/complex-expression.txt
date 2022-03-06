@@ -73,3 +73,18 @@ f (a b) == c, d
         (identifier)
     )
 )
+
+==================
+negative numbers in complex invocation
+==================
+numeric.compare -42, -42
+
+---
+
+(source_file
+    (complex_invocation_expression
+        function: (member_access
+            object: (identifier)
+            members: (member_identifier))
+        (int_literal)
+        (int_literal)))
