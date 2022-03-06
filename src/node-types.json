@@ -814,10 +814,6 @@
             "named": true
           },
           {
-            "type": "float_literal",
-            "named": true
-          },
-          {
             "type": "function_literal",
             "named": true
           },
@@ -827,10 +823,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int_literal",
             "named": true
           },
           {
@@ -1217,6 +1209,14 @@
         "types": [
           {
             "type": "!",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
             "named": false
           }
         ]
