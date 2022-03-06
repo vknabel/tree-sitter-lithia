@@ -37,9 +37,9 @@
 (comment) @comment
 (function_declaration name: (identifier) @function)
 (let_declaration name: (identifier) @variable)
-(enum_declaration name: (identifier) @type)
+(enum_declaration name: (identifier) @type.enum)
 (enum_case_reference) @type
-(data_declaration name: (identifier) @type)
+(data_declaration name: (identifier) @type.struct)
 (data_property_function name: (identifier) @function)
 (data_property_value name: (identifier) @property)
 (extern_declaration
@@ -52,9 +52,9 @@
 (extern_declaration
     name: (identifier) @type.builtin
     !parameters)
-(import_declaration name: (import_module) @variable)
-(import_members (identifier) @variable)
-(module_declaration name: (identifier) @variable)
+(import_declaration name: (import_module) @variable.import)
+(import_members (identifier) @variable.import)
+(module_declaration name: (identifier) @variable.import)
 (complex_invocation_expression function: (identifier) @function)
 (simple_invocation_expression function: (identifier) @function)
 (string_literal) @string

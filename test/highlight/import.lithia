@@ -1,14 +1,14 @@
 import prelude
 // <- keyword
-//     ^ variable
+//     ^ variable.import
 
 import prelude {
 // <- keyword
-//     ^ variable
+//     ^ variable.import
     Int
-//  ^ variable
+//  ^ variable.import
     print
-//  ^ variable
+//  ^ variable.import
 }
 
 import myapp.private

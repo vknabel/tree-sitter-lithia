@@ -1,25 +1,25 @@
 data Leaf {
 // <- keyword
-//   ^ type
+//   ^ type.struct
     value
 //  ^ property
 }
 
 enum Tree {
 // <- keyword
-//   ^ type
+//   ^ type.enum
     data Branch {
 //  ^ keyword
-//       ^ type
+//       ^ type.struct
         left
 //      ^ property
         right
 //      ^ property
     }
     Leaf
-//  ^ type
+//  ^ type.struct
 }
 
 Leaf "leaf"
-// <- type
+// <- type.struct
 //   ^ string
