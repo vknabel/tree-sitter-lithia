@@ -1,0 +1,109 @@
+==================
+empty dict
+==================
+
+[:]
+
+---
+
+(source_file
+    (dict_literal))
+
+==================
+single item dict
+==================
+
+[key: value]
+
+---
+
+(source_file
+    (dict_literal
+        (dict_entry
+            key: (identifier)
+            value: (identifier))))
+
+==================
+multi item dict
+==================
+
+[key: value, key2: value2]
+
+---
+
+(source_file
+    (dict_literal
+        (dict_entry
+            key: (identifier)
+            value: (identifier))
+        (dict_entry
+            key: (identifier)
+            value: (identifier))))
+
+==================
+multi line item dict
+==================
+
+[
+    key: value,
+    key2: value2
+]
+
+---
+
+(source_file
+    (dict_literal
+        (dict_entry
+            key: (identifier)
+            value: (identifier))
+        (dict_entry
+            key: (identifier)
+            value: (identifier))))
+
+==================
+multi line item dict, trailing comma
+==================
+
+[
+    key: value,
+    key2: value2,
+]
+
+---
+
+(source_file
+    (dict_literal
+        (dict_entry
+            key: (identifier)
+            value: (identifier))
+        (dict_entry
+            key: (identifier)
+            value: (identifier))))
+
+==================
+simple invocation
+==================
+
+[
+    k a: f a,
+    k b: g b,
+]
+
+---
+
+(source_file
+    (dict_literal
+        (dict_entry
+            key: (simple_invocation_expression
+                function: (identifier)
+                (identifier))
+            value: (simple_invocation_expression
+                function: (identifier)
+                (identifier)))
+        (dict_entry
+            key: (simple_invocation_expression
+                function: (identifier)
+                (identifier))
+            value: (simple_invocation_expression
+                function: (identifier)
+                (identifier)))))

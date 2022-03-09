@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- syntax: dictionary support `[:]`
+- syntax: require `,` in lists like arrays
+
 ## 0.1.2
 
 - syntax: keep regression in `(summary.ok-1)`

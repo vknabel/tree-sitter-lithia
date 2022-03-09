@@ -1,0 +1,87 @@
+==================
+empty array
+==================
+
+[]
+
+---
+
+(source_file
+    (array_literal))
+
+==================
+single item array
+==================
+
+[id]
+
+---
+
+(source_file
+    (array_literal
+        (identifier)))
+
+==================
+multi item array
+==================
+
+[a, b]
+
+---
+
+(source_file
+    (array_literal
+        (identifier)
+        (identifier)))
+
+==================
+multi line item array
+==================
+
+[
+    a,
+    b
+]
+
+---
+
+(source_file
+    (array_literal
+        (identifier)
+        (identifier)))
+
+==================
+multi line item array, trailing comma
+==================
+
+[
+    a,
+    b,
+]
+
+---
+
+(source_file
+    (array_literal
+        (identifier)
+        (identifier)))
+
+==================
+simple invocation
+==================
+
+[
+    f a,
+    g b,
+]
+
+---
+
+(source_file
+    (array_literal
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))))

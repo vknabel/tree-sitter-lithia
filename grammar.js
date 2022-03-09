@@ -57,7 +57,7 @@ module.exports = grammar({
       ),
     import_module: ($) => sepRepeat1(".", $.identifier),
     import_members: ($) =>
-      seq("{", sepRepeat($._list_terminator, $.identifier), "}"),
+      seq("{", sepRepeat($._implicit_list_terminator, $.identifier), "}"),
 
     // let abc def
     // let abc = def
@@ -119,7 +119,7 @@ module.exports = grammar({
         field("name", $.identifier),
         optional(seq("{", field("cases", optional($.enum_case_list)), "}"))
       ),
-    enum_case_list: ($) => seq(optional($.comment), sepRepeat1($._list_terminator, $._enum_case)),
+    enum_case_list: ($) => seq(optional($.comment), sepRepeat1($._implicit_list_terminator, $._enum_case)),
     _enum_case: ($) =>
       repeat1(
         choice(
@@ -279,7 +279,7 @@ module.exports = grammar({
     type_expression: ($) =>
       seq("type", field("type", $._argument), field("body", $.type_body)),
     type_body: ($) => seq("{", optional($._type_case_list), "}"),
-    _type_case_list: ($) => sepRepeat1($._list_terminator, $.type_case),
+    _type_case_list: ($) => sepRepeat1($._explicit_list_terminator, $.type_case),
     type_case: ($) =>
       seq(
         field("label", $.identifier),
@@ -294,7 +294,8 @@ module.exports = grammar({
         $.group_literal,
         $.function_literal,
         $._number_literal,
-        $.array_literal
+        $.array_literal,
+        $.dict_literal,
       ),
     string_literal: ($) =>
       seq(
@@ -324,7 +325,10 @@ module.exports = grammar({
     int_literal: ($) => $._int,
     float_literal: ($) => $._float,
     array_literal: ($) =>
-      seq("[", sepRepeat($._list_terminator, $._simple_expression), "]"),
+      seq("[", sepRepeat($._explicit_list_terminator, $._simple_expression), "]"),
+    dict_literal: ($) =>
+      seq("[", choice(":", sepRepeat1($._explicit_list_terminator, $.dict_entry)), "]"),
+    dict_entry: ($) => seq(field("key", $._simple_expression), ":", field("value", $._simple_expression)),
 
     // { }
     // { param, param => some calls }
@@ -335,10 +339,11 @@ module.exports = grammar({
         field("body", optional(alias($._statement_list, $.function_body))),
         "}"
       ),
-    parameter_list: ($) => sepRepeat1($._list_terminator, $.identifier),
+    parameter_list: ($) => sepRepeat1($._explicit_list_terminator, $.identifier),
 
-    _statement_terminator: ($) => choice(/(\n+|;)/),
-    _list_terminator: ($) => choice(/(\n+|,)/),
+    _statement_terminator: ($) => /(\n+|;)/,
+    _implicit_list_terminator: ($) => /(\n+|,)/,
+    _explicit_list_terminator: ($) => ",",
     identifier: ($) => token(seq(letter, repeat(choice(letter, unicodeDigit)))),
     _number: ($) => choice($._int, $._float),
     _int: ($) => /-?[0-9]+/,

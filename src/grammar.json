@@ -261,7 +261,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "_list_terminator"
+                        "name": "_implicit_list_terminator"
                       },
                       {
                         "type": "SYMBOL",
@@ -275,7 +275,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_list_terminator"
+                      "name": "_implicit_list_terminator"
                     },
                     {
                       "type": "BLANK"
@@ -657,7 +657,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_list_terminator"
+                    "name": "_implicit_list_terminator"
                   },
                   {
                     "type": "SYMBOL",
@@ -671,7 +671,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_list_terminator"
+                  "name": "_implicit_list_terminator"
                 },
                 {
                   "type": "BLANK"
@@ -1338,7 +1338,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_list_terminator"
+                "name": "_explicit_list_terminator"
               },
               {
                 "type": "SYMBOL",
@@ -1352,7 +1352,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_list_terminator"
+              "name": "_explicit_list_terminator"
             },
             {
               "type": "BLANK"
@@ -1412,6 +1412,10 @@
         {
           "type": "SYMBOL",
           "name": "array_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dict_literal"
         }
       ]
     },
@@ -1554,7 +1558,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "_list_terminator"
+                        "name": "_explicit_list_terminator"
                       },
                       {
                         "type": "SYMBOL",
@@ -1568,7 +1572,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_list_terminator"
+                      "name": "_explicit_list_terminator"
                     },
                     {
                       "type": "BLANK"
@@ -1585,6 +1589,90 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "dict_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "dict_entry"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_explicit_list_terminator"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "dict_entry"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_explicit_list_terminator"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "dict_entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "key",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_simple_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_simple_expression"
+          }
         }
       ]
     },
@@ -1661,7 +1749,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_list_terminator"
+                "name": "_explicit_list_terminator"
               },
               {
                 "type": "SYMBOL",
@@ -1675,7 +1763,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_list_terminator"
+              "name": "_explicit_list_terminator"
             },
             {
               "type": "BLANK"
@@ -1685,22 +1773,16 @@
       ]
     },
     "_statement_terminator": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "(\\n+|;)"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "(\\n+|;)"
     },
-    "_list_terminator": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "(\\n+|,)"
-        }
-      ]
+    "_implicit_list_terminator": {
+      "type": "PATTERN",
+      "value": "(\\n+|,)"
+    },
+    "_explicit_list_terminator": {
+      "type": "STRING",
+      "value": ","
     },
     "identifier": {
       "type": "TOKEN",
