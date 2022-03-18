@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- chore: upgrade dependencies
+
 ## 0.2.0
 
 - syntax: dictionary support `[:]`
