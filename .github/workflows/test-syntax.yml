@@ -1,0 +1,27 @@
+name: Test Syntax
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install
+        run: npm install
+
+      - name: Generate
+        run: npm run gen
+
+      - name: Test
+        run: npm test
