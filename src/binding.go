@@ -1,10 +1,10 @@
 package src
 
 //#include "./tree_sitter/parser.h"
-//TSLanguage *tree_sitter_Lithia();
+//TSLanguage *tree_sitter_lithia();
 import "C"
 import (
 	"unsafe"
 )
 
-var LanguagePtr = unsafe.Pointer(C.tree_sitter_Lithia())
+var LanguagePtr = unsafe.Pointer(C.tree_sitter_lithia())
