@@ -5,7 +5,7 @@ const unicodeValue = unicodeChar;
 const letter = choice(unicodeLetter, "_");
 
 module.exports = grammar({
-  name: "Lithia",
+  name: "lithia",
 
   extras: ($) => [$.comment, /\s/],
 
