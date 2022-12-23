@@ -1,0 +1,12 @@
+===================
+Empty file
+===================
+---
+(source_file)
+
+===================
+Missing newline at end of file
+===================
+abc
+---
+(source_file (identifier))

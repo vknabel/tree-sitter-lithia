@@ -1,0 +1,107 @@
+==========================
+Parameterless
+==========================
+
+func abc { => }
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal)))
+
+==========================
+Without newlines
+==========================
+func abc { => }
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal)))
+
+==========================
+With some parameters
+==========================
+
+func abc { a, b => }
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal
+        parameters: (parameter_list
+            (identifier)
+            (identifier)))))
+
+==========================
+With some parameters and a newline
+==========================
+
+func abc { a, b =>
+}
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal
+        parameters: (parameter_list
+            (identifier)
+            (identifier)))))
+
+==========================
+With some parameters and a body
+==========================
+func plus { a, b => a + b }
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal
+        parameters: (parameter_list
+            (identifier)
+            (identifier))
+        body: (function_body
+            (binary_expression
+                (identifier)
+                (identifier))))))
+
+==========================
+With some parameters and a body with a newline
+==========================
+func plus { a, b =>
+    a + b
+}
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal
+        parameters: (parameter_list
+            (identifier)
+            (identifier))
+        body: (function_body
+            (binary_expression
+                (identifier)
+                (identifier))))))
+
+==========================
+With some parameters and a body with a newline and multiline statements
+==========================
+func plus { a, b =>
+    a + b
+    a - b
+}
+
+--------------------------
+(source_file (function_declaration
+    name: (identifier)
+    function: (function_literal
+        parameters: (parameter_list
+            (identifier)
+            (identifier))
+        body: (function_body
+            (binary_expression
+                (identifier)
+                (identifier))
+            (binary_expression
+                (identifier)
+                (identifier))))))

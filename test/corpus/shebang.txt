@@ -2,7 +2,6 @@
 Shebang #! only
 ==================
 #!/usr/bin/env lithia
-
 ---
 
 (source_file)

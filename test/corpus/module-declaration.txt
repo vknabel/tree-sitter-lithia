@@ -8,3 +8,12 @@ module myModule
 (source_file
     (module_declaration
         name: (identifier)))
+
+===================
+Module declaration without newlines
+===================
+module myModule
+---
+(source_file
+    (module_declaration
+        name: (identifier)))

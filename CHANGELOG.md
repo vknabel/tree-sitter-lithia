@@ -3,6 +3,7 @@
 ## Upcoming
 
 - chore: update dependencies
+- fix: more robust parsing with missing newlines
 
 ## 0.2.1
 

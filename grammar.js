@@ -13,8 +13,8 @@ module.exports = grammar({
     source_file: ($) =>
       seq(
         optional($._shebang),
-        optional(seq($.module_declaration, $._statement_terminator)),
-        repeat(seq($._top_level_declaration, $._statement_terminator))
+        optional(seq($.module_declaration, optional($._statement_terminator))),
+        sepRepeat($._statement_terminator, $._top_level_declaration)
       ),
 
     _shebang: ($) => token(seq("#!", /.*/)),
