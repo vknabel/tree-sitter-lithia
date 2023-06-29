@@ -1,6 +1,10 @@
 # Changelog
 
-## Upcoming
+## 0.2.3
+
+- chore: update dependencies
+
+## 0.2.2
 
 - chore: update dependencies
 - fix: more robust parsing with missing newlines
