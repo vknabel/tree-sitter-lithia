@@ -2,7 +2,7 @@
 Complex Invocation Expression
 ==================
 
-f a, b, c
+f(a, b, c)
 
 ---
 
@@ -18,7 +18,7 @@ f a, b, c
 Complex Invocation Expression with simple invocation parameter
 ==================
 
-f a b, c d
+f(a(b), c(d))
 
 ---
 
@@ -37,7 +37,7 @@ f a b, c d
 Complex Invocation Expression with operator parameter
 ==================
 
-f a == b, c
+f(a == b, c)
 
 ---
 
@@ -54,7 +54,7 @@ f a == b, c
 Complex Invocation Expression with simple invocation operator parameter
 ==================
 
-f (a b) == c, d
+f((a(b)) == c, d)
 
 ---
 
@@ -77,7 +77,7 @@ f (a b) == c, d
 ==================
 negative numbers in complex invocation
 ==================
-numeric.compare -42, -42
+numeric.compare(-42, -42)
 
 ---
 

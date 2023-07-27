@@ -85,8 +85,8 @@ simple invocation
 ==================
 
 [
-    k a: f a,
-    k b: g b,
+    k(a): f(a),
+    k(b): g(b),
 ]
 
 ---

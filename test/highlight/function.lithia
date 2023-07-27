@@ -7,14 +7,14 @@ func example { abc, def =>
 //  ^ keyword
 //      ^ variable
 //            ^ variable
-    print abc, def, xyz
+    print(abc, def, xyz)
 //  ^ function
 //        ^ variable.parameter
 //             ^ variable.parameter
 //                  ^ variable
 }
 
-example abc, def
+example(abc, def)
 // <- function
 //      ^ variable
 //           ^ variable

@@ -7,7 +7,7 @@ greeting.length
 // <- variable
 //       ^ property
 
-greeting.concat "!"
+greeting.concat("!")
 // <- variable
 //      ^ punctuation
 //       ^ function

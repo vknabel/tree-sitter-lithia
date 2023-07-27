@@ -65,7 +65,7 @@ module.exports = grammar({
       seq(
         "let",
         field("name", $.identifier),
-        optional("="),
+        "=",
         field("value", $._complex_expression)
       ),
 
@@ -139,7 +139,7 @@ module.exports = grammar({
       choice(
         // a
         $._argument,
-        // a b, c, (d e)
+        // a(b, c)
         $.complex_invocation_expression,
         // a + b
         $.binary_expression,
@@ -149,16 +149,15 @@ module.exports = grammar({
     complex_invocation_expression: ($) =>
       seq(
         field("function", $._argument),
-        sepRepeat1(",", $._simple_expression)
+        "(",
+        sepRepeat(",", $._simple_expression),
+        ")"
       ),
-    // a b
-    simple_invocation_expression: ($) =>
-      seq(field("function", $._argument), $._argument),
 
     _simple_expression: ($) =>
       choice(
         $._argument,
-        $.simple_invocation_expression,
+        alias($.complex_invocation_expression, $.simple_invocation_expression),
         $.unary_expression,
         $.binary_expression
       ),
