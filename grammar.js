@@ -133,7 +133,32 @@ module.exports = grammar({
     _statement_list: ($) =>
       seq(sepRepeat1($._statement_terminator, $._statement)),
     _statement: ($) =>
-      choice($._scope_level_declaration, $._complex_expression),
+      choice($._scope_level_declaration, $.return_statement, $._complex_expression),
+
+    _statement_list: ($) =>
+      seq(sepRepeat1($._statement_terminator, $._statement)),
+    _statement: ($) =>
+      choice($._scope_level_declaration, $.return_statement, $._complex_expression),
+
+    return_statement: ($) =>
+      seq("return", $._complex_expression),
+
+    if_expression: ($) =>
+      seq(
+        "if",
+        field("condition", $._argument),
+        "{",
+        field("body", optional($._statement_list)),
+        "}",
+        optional(field("else", $.else_expression))
+      ),
+    else_expression: ($) =>
+      seq(
+        "else", choice(
+          $.if_expression,
+          seq("{", field("body", optional($._statement_list)), "}")
+        )
+      ),
 
     _complex_expression: ($) =>
       choice(
@@ -273,7 +298,7 @@ module.exports = grammar({
           )
         )
       ),
-    _argument: ($) => choice($.member_access, $._literal, $.type_expression),
+    _argument: ($) => choice($.member_access, $._literal, $.type_expression, $.if_expression),
     member_access: ($) => seq(field("object", $._literal), field("members", repeat1(seq(".", alias($.identifier, $.member_identifier))))),
 
     type_expression: ($) =>

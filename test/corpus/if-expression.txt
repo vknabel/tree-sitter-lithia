@@ -1,0 +1,80 @@
+===============
+empty if expr
+===============
+
+if True {}
+
+---
+
+(source_file
+	(if_expression
+		condition: (identifier)))
+
+==============
+empty if else
+==============
+
+if True {
+	
+} else {
+	
+}
+
+---
+
+(source_file
+	(if_expression
+		condition: (identifier)
+		else: (else_expression)))
+
+==================
+empty if, else if
+==================
+
+if True {
+	
+} else if False {
+	
+}
+
+---
+
+(source_file
+	(if_expression
+		condition: (identifier)
+		else: (else_expression
+			(if_expression
+				condition: (identifier)))))
+
+
+==================
+if with return
+==================
+
+if True {
+	return err
+}
+
+---
+
+(source_file
+	(if_expression
+		condition: (identifier)
+		body: (return_statement
+			(identifier))))
+
+===================
+if with nested if
+===================
+
+if True {
+	if False {}
+}
+
+---
+
+(source_file
+	(if_expression
+		condition: (identifier)
+		body: (if_expression
+			condition: (identifier))))
