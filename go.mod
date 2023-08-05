@@ -2,4 +2,4 @@ module github.com/vknabel/tree-sitter-lithia
 
 go 1.20
 
-require github.com/smacker/go-tree-sitter v0.0.0-20230501083651-a7d92773b3aa
+require github.com/smacker/go-tree-sitter v0.0.0-20230720070738-0d0a9f78d8f8

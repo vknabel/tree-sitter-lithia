@@ -1,5 +1,9 @@
 # Changelog
 
+## next
+
+- chore: update dependencies
+
 ## 0.2.3
 
 - chore: update dependencies
