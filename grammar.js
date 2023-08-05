@@ -93,7 +93,14 @@ module.exports = grammar({
       choice($.data_property_value, $.data_property_function),
     data_property_value: ($) => field("name", $.identifier),
     data_property_function: ($) =>
-      seq(field("name", $.identifier), field("parameters", $.parameter_list)),
+      seq(
+        field("name", $.identifier),
+        choice(
+          seq("(", optional($._data_property_function_params), ")"),
+          $._data_property_function_params
+        ),
+      ),
+    _data_property_function_params: ($) => field("parameters", $.parameter_list),
     // seq($.identifier, repeat(alias($.identifier, $.data_property_parameter))),
 
     // extern X
@@ -147,13 +154,26 @@ module.exports = grammar({
         $.unary_expression
       ),
     complex_invocation_expression: ($) =>
+      choice(
+        $._explicit_invocation_expression,
+        seq(
+          field("function", $._argument),
+          sepRepeat1(",", $._simple_expression)
+        )
+      ),
+    _explicit_invocation_expression: ($) =>
       seq(
         field("function", $._argument),
-        sepRepeat1(",", $._simple_expression)
+        token.immediate("("),
+        sepRepeat(",", $._simple_expression),
+        ")"
       ),
     // a b
     simple_invocation_expression: ($) =>
+      choice(
+      $._explicit_invocation_expression,
       seq(field("function", $._argument), $._argument),
+    ),
 
     _simple_expression: ($) =>
       choice(

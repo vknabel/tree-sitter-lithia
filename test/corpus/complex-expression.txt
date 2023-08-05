@@ -88,3 +88,23 @@ numeric.compare -42, -42
             members: (member_identifier))
         (int_literal)
         (int_literal)))
+
+==================
+Explicit Complex Invocation Expression with simple invocation parameter
+==================
+
+f(a b, c(d))
+
+---
+
+
+(source_file
+    (complex_invocation_expression
+        function: (identifier)
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier))))
+

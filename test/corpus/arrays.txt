@@ -85,3 +85,25 @@ simple invocation
         (simple_invocation_expression
             function: (identifier)
             (identifier))))
+
+====================
+explicit invocation
+====================
+
+[
+    f(a, b),
+    g(c, d),
+]
+
+---
+
+(source_file
+    (array_literal
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier)
+            (identifier))
+        (simple_invocation_expression
+            function: (identifier)
+            (identifier)
+            (identifier))))

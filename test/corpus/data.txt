@@ -1,0 +1,43 @@
+================
+empty data decl
+================
+
+data Type {}
+
+---
+
+(source_file
+	(data_declaration
+		name: (identifier)))
+
+================
+mixed data decl
+================
+
+data Type {
+	name
+	f(exp, licit)
+	noargs()
+	impl icit, arg
+}
+
+---
+
+(source_file
+	(data_declaration
+		name: (identifier)
+		properties: (data_property_list
+			(data_property_value
+				name: (identifier))
+			(data_property_function
+				name: (identifier)
+				parameters: (parameter_list
+					(identifier)
+					(identifier)))
+			(data_property_function
+				name: (identifier))
+			(data_property_function
+				name: (identifier)
+				parameters: (parameter_list
+					(identifier)
+					(identifier))))))

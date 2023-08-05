@@ -229,7 +229,7 @@
     },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "array_literal",
@@ -328,7 +328,7 @@
       },
       "parameters": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "parameter_list",
@@ -1093,11 +1093,15 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
           "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -1129,11 +1133,19 @@
           "named": true
         },
         {
+          "type": "simple_invocation_expression",
+          "named": true
+        },
+        {
           "type": "string_literal",
           "named": true
         },
         {
           "type": "type_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
