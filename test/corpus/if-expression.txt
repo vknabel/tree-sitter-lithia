@@ -60,8 +60,9 @@ if True {
 (source_file
 	(if_expression
 		condition: (identifier)
-		body: (return_statement
-			(identifier))))
+		body: (if_body
+			(return_statement
+				(identifier)))))
 
 ===================
 if with nested if
@@ -76,5 +77,6 @@ if True {
 (source_file
 	(if_expression
 		condition: (identifier)
-		body: (if_expression
-			condition: (identifier))))
+		body: (if_body
+			(if_expression
+				condition: (identifier)))))

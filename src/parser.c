@@ -9,7 +9,7 @@
 #define STATE_COUNT 468
 #define LARGE_STATE_COUNT 2
 #define SYMBOL_COUNT 107
-#define ALIAS_COUNT 3
+#define ALIAS_COUNT 4
 #define TOKEN_COUNT 46
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 17
@@ -123,9 +123,10 @@ enum {
   aux_sym_array_literal_repeat1 = 104,
   aux_sym_dict_literal_repeat1 = 105,
   aux_sym_parameter_list_repeat1 = 106,
-  alias_sym_enum_case_reference = 107,
-  alias_sym_function_body = 108,
-  alias_sym_member_identifier = 109,
+  alias_sym_else_body = 107,
+  alias_sym_enum_case_reference = 108,
+  alias_sym_function_body = 109,
+  alias_sym_member_identifier = 110,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -193,7 +194,7 @@ static const char * const ts_symbol_names[] = {
   [sym_enum_declaration] = "enum_declaration",
   [sym_enum_case_list] = "enum_case_list",
   [aux_sym__enum_case] = "_enum_case",
-  [sym__statement_list] = "_statement_list",
+  [sym__statement_list] = "if_body",
   [sym__statement] = "_statement",
   [sym_return_statement] = "return_statement",
   [sym_if_expression] = "if_expression",
@@ -236,6 +237,7 @@ static const char * const ts_symbol_names[] = {
   [aux_sym_array_literal_repeat1] = "array_literal_repeat1",
   [aux_sym_dict_literal_repeat1] = "dict_literal_repeat1",
   [aux_sym_parameter_list_repeat1] = "parameter_list_repeat1",
+  [alias_sym_else_body] = "else_body",
   [alias_sym_enum_case_reference] = "enum_case_reference",
   [alias_sym_function_body] = "function_body",
   [alias_sym_member_identifier] = "member_identifier",
@@ -349,6 +351,7 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym_array_literal_repeat1] = aux_sym_array_literal_repeat1,
   [aux_sym_dict_literal_repeat1] = aux_sym_dict_literal_repeat1,
   [aux_sym_parameter_list_repeat1] = aux_sym_parameter_list_repeat1,
+  [alias_sym_else_body] = alias_sym_else_body,
   [alias_sym_enum_case_reference] = alias_sym_enum_case_reference,
   [alias_sym_function_body] = alias_sym_function_body,
   [alias_sym_member_identifier] = alias_sym_member_identifier,
@@ -612,7 +615,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [sym__statement_list] = {
-    .visible = false,
+    .visible = true,
     .named = true,
   },
   [sym__statement] = {
@@ -782,6 +785,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   [aux_sym_parameter_list_repeat1] = {
     .visible = false,
     .named = false,
+  },
+  [alias_sym_else_body] = {
+    .visible = true,
+    .named = true,
   },
   [alias_sym_enum_case_reference] = {
     .visible = true,
@@ -962,11 +969,15 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
   [22] = {
     [3] = alias_sym_function_body,
   },
+  [30] = {
+    [2] = alias_sym_else_body,
+  },
 };
 
 static const uint16_t ts_non_terminal_alias_map[] = {
-  sym__statement_list, 2,
+  sym__statement_list, 3,
     sym__statement_list,
+    alias_sym_else_body,
     alias_sym_function_body,
   0,
 };

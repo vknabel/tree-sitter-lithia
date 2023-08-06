@@ -148,7 +148,7 @@ module.exports = grammar({
         "if",
         field("condition", $._argument),
         "{",
-        field("body", optional($._statement_list)),
+        field("body", optional(alias($._statement_list, $.if_body))),
         "}",
         optional(field("else", $.else_expression))
       ),
@@ -156,7 +156,7 @@ module.exports = grammar({
       seq(
         "else", choice(
           $.if_expression,
-          seq("{", field("body", optional($._statement_list)), "}")
+          seq("{", field("body", optional(alias($._statement_list, $.else_body))), "}")
         )
       ),
 

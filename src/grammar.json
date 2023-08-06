@@ -842,8 +842,13 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_statement_list"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_statement_list"
+                },
+                "named": true,
+                "value": "if_body"
               },
               {
                 "type": "BLANK"
@@ -901,8 +906,13 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "SYMBOL",
-                        "name": "_statement_list"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_statement_list"
+                        },
+                        "named": true,
+                        "value": "else_body"
                       },
                       {
                         "type": "BLANK"
